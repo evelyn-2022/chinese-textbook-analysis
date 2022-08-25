@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 import QuestionList from './components/QuestionList';
 import data from './data';
+import './css/index.css';
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa';
 
 const App = () => {
@@ -45,9 +48,12 @@ const App = () => {
 
   return (
     <div>
+      <Navbar />
+      <Hero />
+
       {data.map(({ category, scores, questions }, categoryIndex) => {
         return (
-          <div key={categoryIndex}>
+          <div key={categoryIndex} id={`cat${categoryIndex + 1}`}>
             <h1>
               {category} {categoryIndex + 1}
             </h1>
