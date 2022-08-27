@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import '../css/Question.css';
+import { FaRegFrown, FaRegMeh, FaSmile, FaLaughSquint } from 'react-icons/fa';
 
 const Question = ({
   categoryIndex,
@@ -8,7 +8,8 @@ const Question = ({
   showScore,
   questionIndex,
 }) => {
-  const [activeIndex, setActiveIndex] = useState(undefined);
+  const [activeIndex, setActiveIndex] = useState('');
+  const [hoverIndex, setHoverIndex] = useState('');
   const [score, setScore] = useState(0);
 
   useEffect(() => {
@@ -16,25 +17,66 @@ const Question = ({
   }, [score]);
 
   return (
-    <div>
-      <h2>Question {questionIndex + 1}</h2>
-      <h3>{question}</h3>
+    <div className='question-card'>
+      <h4 className='question-detail'>{question}</h4>
+      <div className='answer-btn-container'>
+        {scores.map((item, index) => {
+          return (
+            <div
+              key={`${categoryIndex}${questionIndex}${index}`}
+              className={`answer-btn answer-btn-${index} ${
+                activeIndex === index && `answer-active-${index}`
+              } ${hoverIndex === index && `answer-hovered-${index}`}`}
+              data-score={item}
+              onMouseEnter={() => {
+                setHoverIndex(index);
+              }}
+              onMouseLeave={() => {
+                setHoverIndex('');
+              }}
+              onClick={e => {
+                const target = e.target.closest('.answer-btn');
+                setScore(target.dataset.score);
+                setActiveIndex(index);
+              }}
+            >
+              <span className='hidden'>{item}</span>
 
-      {scores.map((item, index) => {
-        return (
-          <div
-            key={index}
-            className={`btn ${activeIndex === index && 'active'}`}
-            data-score={item}
-            onClick={e => {
-              setScore(e.target.dataset.score);
-              setActiveIndex(index);
-            }}
-          >
-            {item}
-          </div>
-        );
-      })}
+              {index === 0 && (
+                <FaRegFrown
+                  className={`answer-icon answer-icon-${index} ${
+                    activeIndex === index && `answer-icon-active`
+                  } ${hoverIndex === index && `answer-icon-hovered`}`}
+                />
+              )}
+
+              {index === 1 && (
+                <FaRegMeh
+                  className={`answer-icon answer-icon-${index} ${
+                    activeIndex === index && `answer-icon-active`
+                  } ${hoverIndex === index && `answer-icon-hovered`}`}
+                />
+              )}
+
+              {index === 2 && (
+                <FaSmile
+                  className={`answer-icon answer-icon-${index} ${
+                    activeIndex === index && `answer-icon-active`
+                  } ${hoverIndex === index && `answer-icon-hovered`}`}
+                />
+              )}
+
+              {index === 3 && (
+                <FaLaughSquint
+                  className={`answer-icon answer-icon-${index} ${
+                    activeIndex === index && `answer-icon-active`
+                  } ${hoverIndex === index && `answer-icon-hovered`}`}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

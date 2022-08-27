@@ -5,13 +5,15 @@ import logo from '../images/logo-1.svg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState('');
+  const [hoverIndex, setHoverIndex] = useState('');
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
 
   useEffect(() => {
     const linksHeight = linksRef.current.clientHeight;
     if (isOpen) {
-      linksContainerRef.current.style.height = `${linksHeight + 20}px `;
+      linksContainerRef.current.style.height = `${linksHeight + 10}px `;
     } else {
       linksContainerRef.current.style.height = 0;
     }
@@ -19,11 +21,11 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className='nav-center'>
+      <div className='nav-center section'>
         <div className='nav-header'>
-          <img src={logo} alt='logo' />
-          <p className='nav-title'>Lorem, ipsum dolor.</p>
-          <button className='nav-toggle'>
+          {/* <img src={logo} alt='logo' className='logo' /> */}
+          <p className='nav-title'>对外汉语教学</p>
+          <button className={`nav-toggle ${isOpen && 'nav-toggle-active'}`}>
             <FaBars
               onClick={() => {
                 setIsOpen(!isOpen);
@@ -36,16 +38,32 @@ const Navbar = () => {
         and we won't be able to adjust the height by the links */}
         <div className={`links-container`} ref={linksContainerRef}>
           <ul className='links' ref={linksRef}>
-            {links.map(item => {
+            {links.map((item, index) => {
               const { id, url, text } = item;
               return (
-                <li key={id}>
-                  <a href={url}>{text}</a>
+                <li key={index}>
+                  <a
+                    className={`${index === activeIndex && 'active-link'} ${
+                      index === hoverIndex && 'hovered-link'
+                    }`}
+                    href={url}
+                    onMouseEnter={() => {
+                      setHoverIndex(index);
+                    }}
+                    onMouseLeave={() => {
+                      setHoverIndex('');
+                    }}
+                    onClick={() => {
+                      setActiveIndex(index);
+                      setIsOpen(false);
+                    }}
+                  >
+                    {text}
+                  </a>
                 </li>
               );
             })}
           </ul>
-          <button className='btn'>take the test</button>
         </div>
       </div>
     </nav>

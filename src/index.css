@@ -1,0 +1,458 @@
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --clr-primary-1: hsl(209, 45%, 31%);
+  --clr-primary-2: hsl(42, 80%, 60%);
+  --clr-primary-3: hsl(24, 65%, 61%);
+  --clr-primary-4: hsl(353, 44%, 51%);
+  --clr-primary-5: hsl(29, 18%, 25%);
+
+  --clr-primary-1-light: hsl(209, 69%, 61%);
+  --clr-primary-2-light: hsl(42, 80%, 60%);
+  --clr-primary-3-light: hsl(24, 75%, 61%);
+  --clr-primary-4-light: hsl(353, 64%, 61%);
+  --clr-primary-5-light: hsl(129, 48%, 65%);
+
+  --clr-white: #faf6f0;
+
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-red-dark: hsl(360, 67%, 44%);
+  --clr-red-light: hsl(0, 100%, 77%);
+  --clr-green-dark: hsl(125, 67%, 44%);
+  --clr-green-light: hsl(189, 70%, 60%);
+  --clr-black: #222;
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+  --fixed-width: 620px;
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--clr-primary-3);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-5);
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/*  global classes */
+
+/* section */
+.section {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 992px) {
+  .section {
+    width: 95vw;
+  }
+}
+.hidden {
+  display: none;
+}
+.flow > * + * {
+  margin-top: 1em;
+}
+
+.btn {
+  color: var(--clr-white);
+  padding: 0.2rem 0.5rem;
+  background-color: var(--clr-grey-1);
+  cursor: pointer;
+  border-radius: 10rem;
+  white-space: nowrap;
+}
+/*
+=============== 
+Navbar
+===============
+*/
+nav {
+  color: var(--clr-primary-1);
+  background: var(--clr-white);
+  /* box-shadow: var(--light-shadow); */
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+}
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.nav-title {
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  color: var(--clr-primary-1);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.logo {
+  display: none;
+}
+.nav-toggle {
+  font-size: 1.5rem;
+  /* color: var(--clr-grey-3); */
+  background: transparent;
+  border-color: transparent;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.nav-toggle-active {
+  transform: rotate(90deg);
+}
+
+.links a {
+  color: var(--clr-primary-1);
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+}
+.links a:hover {
+  /* background: var(--clr-grey-4); */
+  color: var(--clr-grey-8);
+  padding-left: 1.5rem;
+}
+/* .social-icons {
+  display: none;
+} */
+.links-container {
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+@media screen and (min-width: 1024px) {
+  .nav-center {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 0; */
+  }
+  .nav-header {
+    padding: 0;
+    margin-block: 1rem;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .links-container {
+    display: flex;
+    gap: 10%;
+    height: auto !important;
+    padding-block: 1.65rem;
+  }
+  .links {
+    display: flex;
+  }
+  .links a {
+    padding: 0;
+    margin: 0 0.5rem;
+    position: relative;
+  }
+  .links a:hover {
+    padding: 0;
+  }
+  .hovered-link::after,
+  .active-link::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 46px;
+    width: 100%;
+    height: 4px;
+  }
+  .hovered-link::after {
+    background-color: var(--clr-primary-3);
+  }
+  .active-link::after {
+    background-color: var(--clr-primary-2);
+  }
+  .logo {
+    display: block;
+  }
+  .nav-title {
+    font-size: 1.5rem;
+    /* margin-left: 0.6rem; */
+  }
+
+  /* .social-icons {
+    display: flex;
+  }
+  .social-icons a {
+    margin: 0 0.5rem;
+    color: var(--clr-primary-5);
+    transition: var(--transition);
+  }
+  .social-icons a:hover {
+    color: var(--clr-primary-7);
+  } */
+}
+
+/* 
+=============== 
+Header
+===============
+*/
+
+.header {
+  padding-top: 120px;
+
+  background-color: var(--clr-white);
+  height: auto;
+  background-image: url(./images/blob.svg);
+  background-position: -250px -10px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.header-container {
+  /* max-width: 40%; */
+  display: grid;
+  gap: 0;
+}
+.header-img,
+.header-divider {
+  width: 100%;
+  margin: -1px;
+  padding: 0;
+  object-fit: contain;
+}
+/* .header-divider {
+  height: 200px;
+} */
+
+@media screen and (min-width: 760px) {
+  .header-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 8%;
+  }
+}
+
+/* 
+================== 
+Basic Information
+==================
+*/
+
+.basic-information label {
+  font-size: 1.25rem;
+  display: inline-block;
+}
+.basic-information input {
+  /* margin-left: auto; */
+  display: block;
+  width: 10rem;
+  /* text-align: right; */
+}
+@media screen and (min-width: 680px) {
+  .basic-information-form {
+    /* grid-auto-flow: column; */
+    columns: 2;
+    gap: 10%;
+  }
+}
+form {
+  background-color: var(--clr-white);
+  border-radius: 10px;
+  box-shadow: var(--dark-shadow);
+  padding: 2rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+fieldset {
+  border: 0;
+}
+.input-item {
+  display: flex;
+  justify-content: space-between;
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* 
+================== 
+Question Form
+==================
+*/
+.question-card {
+  display: flex;
+  flex-direction: column;
+}
+.question-detail {
+  text-align: left;
+}
+.answer-btn-container {
+  text-align: left;
+}
+
+@media screen and (min-width: 680px) {
+  .question-card {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .question-detail {
+    display: inline-block;
+  }
+
+  .answer-btn-container {
+    display: inline-block;
+  }
+}
+
+.answer-btn {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid;
+  border-radius: 7px;
+  position: relative;
+}
+.answer-icon {
+  font-size: 27px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.answer-btn-0 {
+  border-color: var(--clr-primary-4-light);
+}
+.answer-btn-1 {
+  border-color: var(--clr-primary-3-light);
+}
+.answer-btn-2 {
+  border-color: var(--clr-primary-1-light);
+}
+.answer-btn-3 {
+  border-color: var(--clr-primary-5-light);
+}
+.answer-icon-0 {
+  color: var(--clr-primary-4-light);
+}
+.answer-icon-1 {
+  color: var(--clr-primary-3-light);
+}
+.answer-icon-2 {
+  color: var(--clr-primary-1-light);
+}
+.answer-icon-3 {
+  color: var(--clr-primary-5-light);
+}
+.answer-hovered-0,
+.answer-active-0 {
+  background-color: var(--clr-primary-4-light);
+}
+.answer-hovered-1,
+.answer-active-1 {
+  background-color: var(--clr-primary-3-light);
+}
+.answer-hovered-2,
+.answer-active-2 {
+  background-color: var(--clr-primary-1-light);
+}
+.answer-hovered-3,
+.answer-active-3 {
+  background-color: var(--clr-primary-5-light);
+}
+.answer-icon-active,
+.answer-icon-hovered {
+  color: var(--clr-white);
+}

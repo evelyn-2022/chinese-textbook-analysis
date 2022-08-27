@@ -3,11 +3,11 @@ import Question from './Question';
 
 const QuestionList = ({ categoryIndex, scores, questions, showScore }) => {
   return (
-    <div>
+    <div className='question-card-container flow'>
       {questions.map((question, questionIndex) => {
         return (
           <Question
-            key={questionIndex}
+            key={`${categoryIndex}${questionIndex}`}
             categoryIndex={categoryIndex}
             question={question}
             scores={scores}

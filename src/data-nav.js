@@ -4,49 +4,36 @@ export const links = [
   {
     id: 1,
     url: '#',
-    text: 'random',
+    text: '一一与一一',
   },
   {
     id: 2,
     url: '#cat1',
-    text: 'about',
+    text: '二二与二二',
   },
   {
     id: 3,
     url: '#cat2',
-    text: 'projects',
+    text: '三三与三三',
   },
   {
     id: 4,
     url: '#cat3',
-    text: 'contact',
+    text: '呜呜与无误',
   },
   {
     id: 5,
     url: '#cat4',
-    text: 'profile',
-  },
-];
-
-export const social = [
-  {
-    id: 1,
-    url: 'https://www.twitter.com',
-    icon: <FaFacebook />,
+    text: '思思雨丝丝',
   },
   {
-    id: 2,
-    url: 'https://www.twitter.com',
-    icon: <FaTwitter />,
+    id: 6,
+    url: '#cat5',
+    text: '思思雨丝丝',
   },
   {
-    id: 3,
-    url: 'https://www.twitter.com',
-    icon: <FaLinkedin />,
-  },
-  {
-    id: 4,
-    url: 'https://www.twitter.com',
-    icon: <FaBehance />,
+    id: 6,
+    url: '#cat5',
+    text: '扫码参与',
   },
 ];
