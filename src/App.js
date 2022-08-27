@@ -4,10 +4,12 @@ import Header from './components/Header';
 import BasicInformation from './components/BasicInformation';
 import QuestionForm from './components/QuestionForm';
 import Footer from './components/Footer';
+import GeneratedReport from './components/GeneratedReport';
 import './index.css';
 
 const App = () => {
   const [scoreList, setScoreList] = useState([]);
+  const [basicInformation, setBasicInformation] = useState({});
   const [total, setTotal] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -33,6 +35,10 @@ const App = () => {
     setScoreList(newList);
   };
 
+  const showInformation = info => {
+    setBasicInformation(info);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -49,15 +55,26 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
-      <Header />
-      <main>
-        <BasicInformation />
-        <QuestionForm showScore={showScore} handleSubmit={handleSubmit} />
-
-        {total}
-      </main>
-      <Footer />
+      {!isSubmitted && <Navbar />}
+      {!isSubmitted && <Header />}
+      {!isSubmitted && (
+        <main>
+          <BasicInformation showInformation={showInformation} />
+          <QuestionForm
+            showScore={showScore}
+            handleSubmit={handleSubmit}
+            setIsSubmitted={setIsSubmitted}
+          />
+        </main>
+      )}
+      {!isSubmitted && <Footer />}
+      {isSubmitted && (
+        <GeneratedReport
+          info={basicInformation}
+          total={total}
+          setIsSubmitted={setIsSubmitted}
+        />
+      )}
     </>
   );
 };

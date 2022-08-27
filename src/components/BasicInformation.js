@@ -1,15 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import bgWave from '../images/bg-wave.svg';
 
-const BasicInformation = () => {
+const BasicInformation = ({ showInformation }) => {
   const [name, setName] = useState('');
   const [author, setAuthor] = useState('');
   const [year, setYear] = useState('');
   const [publisher, setPublisher] = useState('');
   const [type, setType] = useState('');
-  const [targetReader, setTargetReader] = useState('');
+  const [target, setTarget] = useState('');
   const [size, setSize] = useState('');
   const [pages, setPages] = useState('');
+  const [isEditing, setIsEditing] = useState(true);
+
+  useEffect(() => {
+    showInformation({
+      name,
+      author,
+      year,
+      publisher,
+      type,
+      target,
+      size,
+      pages,
+    });
+  }, [name, author, year, publisher, type, target, size, pages]);
 
   return (
     <div className='basic-information'>
@@ -17,12 +31,13 @@ const BasicInformation = () => {
         <img src={bgWave} alt='' />
       </div>
       <div className='section' id='basic-information'>
-        <form>
+        <form className='form collect-form'>
           <h2>教材基本信息</h2>
           <fieldset className='basic-information-form flow'>
             <div className='input-item'>
               <label htmlFor='name'>name</label>
               <input
+                disabled={!isEditing}
                 type='text'
                 id='name'
                 value={name}
@@ -34,6 +49,7 @@ const BasicInformation = () => {
             <div className='input-item'>
               <label htmlFor='author'>author</label>
               <input
+                disabled={!isEditing}
                 type='text'
                 id='author'
                 value={author}
@@ -45,6 +61,7 @@ const BasicInformation = () => {
             <div className='input-item'>
               <label htmlFor='year'>year</label>
               <input
+                disabled={!isEditing}
                 type='number'
                 min='1800'
                 max='2099'
@@ -59,6 +76,7 @@ const BasicInformation = () => {
             <div className='input-item'>
               <label htmlFor='publisher'>publisher</label>
               <input
+                disabled={!isEditing}
                 type='text'
                 id='publisher'
                 value={publisher}
@@ -70,6 +88,7 @@ const BasicInformation = () => {
             <div className='input-item'>
               <label htmlFor='type'>type </label>
               <input
+                disabled={!isEditing}
                 type='text'
                 id='type'
                 value={type}
@@ -81,17 +100,19 @@ const BasicInformation = () => {
             <div className='input-item'>
               <label htmlFor='targetReader'>target</label>
               <input
+                disabled={!isEditing}
                 type='text'
                 id='targetReader'
-                value={targetReader}
+                value={target}
                 onChange={e => {
-                  setTargetReader(e.target.value);
+                  setTarget(e.target.value);
                 }}
               />
             </div>
             <div className='input-item'>
-              <label htmlFor='size'>size </label>
+              <label htmlFor='size'>size</label>
               <input
+                disabled={!isEditing}
                 type='text'
                 id='size'
                 value={size}
@@ -103,6 +124,7 @@ const BasicInformation = () => {
             <div className='input-item'>
               <label htmlFor='pages'>pages</label>
               <input
+                disabled={!isEditing}
                 type='number'
                 min='0'
                 value={pages}
@@ -112,6 +134,15 @@ const BasicInformation = () => {
               />
             </div>
           </fieldset>
+          <a
+            type='submit'
+            onClick={e => {
+              setIsEditing(!isEditing);
+            }}
+            className='btn'
+          >
+            {isEditing ? '保存信息' : '返回修改'}
+          </a>
         </form>
       </div>
     </div>
