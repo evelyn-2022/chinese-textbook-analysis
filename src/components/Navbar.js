@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
-import { links } from '../data-nav';
-// import logo from '../images/logo-1.svg';
+import { links } from '../data/data-nav';
+import logo from '../images/logo.svg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,8 +23,10 @@ const Navbar = () => {
     <nav>
       <div className='nav-center section'>
         <div className='nav-header'>
-          {/* <img src={logo} alt='logo' className='logo' /> */}
-          <p className='nav-title'>对外汉语教学</p>
+          <img src={logo} alt='logo' className='logo' />
+          <a className='nav-title' href='#'>
+            对外汉语教学
+          </a>
           <button className={`nav-toggle ${isOpen && 'nav-toggle-active'}`}>
             <FaBars
               onClick={() => {
@@ -41,7 +43,7 @@ const Navbar = () => {
             {links.map((item, index) => {
               const { id, url, text } = item;
               return (
-                <li key={index}>
+                <li key={id}>
                   <a
                     className={`${index === activeIndex && 'active-link'} ${
                       index === hoverIndex && 'hovered-link'

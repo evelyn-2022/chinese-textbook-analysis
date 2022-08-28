@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import bgWave from '../images/bg-wave.svg';
+import wave from '../images/wave-basic-info.svg';
 
 const BasicInformation = ({ showInformation }) => {
   const [name, setName] = useState('');
@@ -27,15 +27,15 @@ const BasicInformation = ({ showInformation }) => {
 
   return (
     <div className='basic-information'>
-      <div className='hero-divider'>
-        <img src={bgWave} alt='' />
+      <div className='divider divider-basic-info'>
+        <img src={wave} alt='' className='divider-img' />
       </div>
       <div className='section' id='basic-information'>
         <form className='form collect-form'>
           <h2>教材基本信息</h2>
           <fieldset className='basic-information-form flow'>
             <div className='input-item'>
-              <label htmlFor='name'>name</label>
+              <label htmlFor='name'>教材名称</label>
               <input
                 disabled={!isEditing}
                 type='text'
@@ -47,7 +47,7 @@ const BasicInformation = ({ showInformation }) => {
               />
             </div>
             <div className='input-item'>
-              <label htmlFor='author'>author</label>
+              <label htmlFor='author'>作者</label>
               <input
                 disabled={!isEditing}
                 type='text'
@@ -59,7 +59,7 @@ const BasicInformation = ({ showInformation }) => {
               />
             </div>
             <div className='input-item'>
-              <label htmlFor='year'>year</label>
+              <label htmlFor='year'>出版时间</label>
               <input
                 disabled={!isEditing}
                 type='number'
@@ -74,7 +74,7 @@ const BasicInformation = ({ showInformation }) => {
               />
             </div>
             <div className='input-item'>
-              <label htmlFor='publisher'>publisher</label>
+              <label htmlFor='publisher'>出版单位</label>
               <input
                 disabled={!isEditing}
                 type='text'
@@ -86,7 +86,7 @@ const BasicInformation = ({ showInformation }) => {
               />
             </div>
             <div className='input-item'>
-              <label htmlFor='type'>type </label>
+              <label htmlFor='type'>教材类型</label>
               <input
                 disabled={!isEditing}
                 type='text'
@@ -98,7 +98,7 @@ const BasicInformation = ({ showInformation }) => {
               />
             </div>
             <div className='input-item'>
-              <label htmlFor='targetReader'>target</label>
+              <label htmlFor='targetReader'>适用对象</label>
               <input
                 disabled={!isEditing}
                 type='text'
@@ -110,7 +110,7 @@ const BasicInformation = ({ showInformation }) => {
               />
             </div>
             <div className='input-item'>
-              <label htmlFor='size'>size</label>
+              <label htmlFor='size'>开本</label>
               <input
                 disabled={!isEditing}
                 type='text'
@@ -122,7 +122,7 @@ const BasicInformation = ({ showInformation }) => {
               />
             </div>
             <div className='input-item'>
-              <label htmlFor='pages'>pages</label>
+              <label htmlFor='pages'>总页码</label>
               <input
                 disabled={!isEditing}
                 type='number'
@@ -136,10 +136,11 @@ const BasicInformation = ({ showInformation }) => {
           </fieldset>
           <a
             type='submit'
-            onClick={e => {
+            onClick={() => {
+              console.log('clicked');
               setIsEditing(!isEditing);
             }}
-            className='btn'
+            className='btn btn-submit'
           >
             {isEditing ? '保存信息' : '返回修改'}
           </a>

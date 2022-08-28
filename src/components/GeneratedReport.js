@@ -33,11 +33,13 @@ const GeneratedReport = ({ info, total, setIsSubmitted }) => {
               <td>{info?.pages}</td>
             </tr>
             <tr>
-              <td colSpan={2}>{total}</td>
+              <td colSpan={4}>总得分：{total}</td>
             </tr>
           </tbody>
         </table>
-        <a href='' className='btn' onClick={() => setIsSubmitted(false)}></a>
+        <a href='' className='btn' onClick={() => setIsSubmitted(false)}>
+          关闭
+        </a>
       </div>
     </div>
   );
