@@ -3,7 +3,7 @@ import { FaBars } from 'react-icons/fa';
 import { links } from '../data/data-nav';
 import logo from '../images/logo.svg';
 
-const Navbar = () => {
+const Navbar = ({ setIsOpenQR }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState('');
   const [hoverIndex, setHoverIndex] = useState('');
@@ -65,6 +65,26 @@ const Navbar = () => {
                 </li>
               );
             })}
+            <li key={'7'}>
+              <a
+                className={`${activeIndex === 7 && 'active-link'} ${
+                  hoverIndex === 7 && 'hovered-link'
+                }`}
+                onMouseEnter={() => {
+                  setHoverIndex(7);
+                }}
+                onMouseLeave={() => {
+                  setHoverIndex('');
+                }}
+                onClick={() => {
+                  setActiveIndex(7);
+                  setIsOpen(false);
+                  setIsOpenQR(true);
+                }}
+              >
+                扫码填写
+              </a>
+            </li>
           </ul>
         </div>
       </div>

@@ -3,8 +3,8 @@ import React from 'react';
 const GeneratedReport = ({ info, total, setIsSubmitted }) => {
   return (
     <div className='report form'>
-      <div className='overlay'></div>
-      <div className='modal'>
+      <div className='overlay' onClick={() => setIsSubmitted(false)}></div>
+      <div className='modal absolute-center'>
         <h3>对外汉语教材评估报告</h3>
         <table>
           <tbody>
@@ -37,7 +37,7 @@ const GeneratedReport = ({ info, total, setIsSubmitted }) => {
             </tr>
           </tbody>
         </table>
-        <a href='' className='btn' onClick={() => setIsSubmitted(false)}>
+        <a className='btn' onClick={() => setIsSubmitted(false)}>
           关闭
         </a>
       </div>

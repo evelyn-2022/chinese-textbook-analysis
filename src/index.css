@@ -5,15 +5,15 @@ Variables
 */
 
 :root {
-  --clr-primary-1: rgb(43, 80, 115);
+  --clr-primary-1: hsl(209, 46%, 31%);
   --clr-primary-2: hsl(42, 80%, 60%);
-  --clr-primary-3: #dc8f5b;
+  --clr-primary-3: hsl(24, 65%, 61%);
   --clr-primary-4: hsl(353, 44%, 51%);
   --clr-primary-5: hsl(29, 18%, 25%);
 
   --clr-primary-1-light: hsl(209, 69%, 61%);
   --clr-primary-2-light: hsl(42, 80%, 60%);
-  --clr-primary-3-light: hsl(24, 75%, 61%);
+  --clr-primary-3-light: #e68d51;
   --clr-primary-4-light: hsl(353, 64%, 61%);
   --clr-primary-5-light: hsl(129, 48%, 65%);
 
@@ -61,15 +61,12 @@ Global Styles
 }
 body {
   font-family: var(--ff-body);
-  /* background: var(--clr-primary-1); */
   background-image: linear-gradient(
       to bottom right,
       rgb(43 80 115 /0.8),
       rgb(43 80 115 /0.9)
     ),
     url(./images/pattern.png);
-  /* background-repeat: repeat; */
-  /* background-size: cover; */
   color: var(--clr-grey-2);
   line-height: 1.5;
   font-size: 62.5%;
@@ -84,6 +81,7 @@ ul {
 }
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 h1,
 h2,
@@ -92,9 +90,7 @@ h4 {
   letter-spacing: var(--spacing);
   text-transform: capitalize;
   text-align: center;
-
   line-height: 1.25;
-  margin-bottom: 1rem;
 }
 h1 {
   font-size: 1.8rem;
@@ -109,6 +105,7 @@ h2 {
 h3 {
   font-size: 1.2rem;
   font-family: var(--ff-heading);
+  margin-bottom: 1rem;
 }
 h4 {
   font-size: 0.875rem;
@@ -128,6 +125,12 @@ label {
   h1 {
     text-align: left;
     font-size: 2.8rem;
+  }
+  h3 {
+    margin-block: 1.5rem;
+  }
+  h4 {
+    font-size: 1rem;
   }
 }
 @media screen and (min-width: 800px) {
@@ -157,7 +160,6 @@ label {
   }
 }
 
-/* section */
 .section {
   width: 86vw;
   margin: 0 auto;
@@ -169,6 +171,7 @@ label {
     width: 95vw;
   }
 }
+
 .hidden {
   display: none;
 }
@@ -201,6 +204,12 @@ label {
   border-radius: var(--radius-lg);
   box-shadow: var(--dark-shadow);
   text-align: center;
+}
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 /*
 =============== 
@@ -380,9 +389,7 @@ Header
 Basic Information
 ==================
 */
-.basic-information {
-  position: relative;
-}
+
 .basic-information label {
   display: inline-block;
 }
@@ -406,7 +413,7 @@ Basic Information
 }
 @media screen and (min-width: 1200px) {
   .divider-basic-info {
-    margin-top: -70px;
+    margin-top: -60px;
     margin-bottom: -120px;
   }
 }
@@ -415,6 +422,7 @@ Basic Information
   padding: 2rem;
   margin-bottom: 20px;
   margin-inline: auto;
+  position: relative;
 }
 fieldset {
   border: 0;
@@ -460,6 +468,7 @@ Question Form
 @media screen and (min-width: 680px) {
   .question-card {
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
   }
   .question-detail {
@@ -491,10 +500,6 @@ Question Form
 }
 .answer-icon {
   font-size: 27px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .answer-btn-0 {
@@ -551,7 +556,6 @@ Footer
   display: flex;
   flex-direction: column;
   padding-block: 1rem;
-  width: clamp(300px, 100%, var(--fixed-width));
 }
 .footer {
   color: var(--clr-white);
@@ -562,6 +566,11 @@ Footer
   .footer-container {
     flex-direction: row;
     justify-content: space-between;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .footer-container {
+    width: clamp(300px, 100%, var(--fixed-width));
   }
 }
 /* 
@@ -581,18 +590,18 @@ Generated Report
   top: 0;
   left: 0;
   filter: blur(1px);
-  background-color: rgb(34 34 34 /0.8);
+  background-image: linear-gradient(
+      to bottom right,
+      rgb(34 34 34 /0.9),
+      rgb(34 34 34 /0.8)
+    ),
+    url(./images/pattern.png);
 }
 .modal {
   z-index: 1;
   width: clamp(350px, 75%, 500px);
   border-radius: var(--radius-lg);
   padding: 1rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* color: var(--clr-white); */
   background-color: var(--clr-white);
 }
 .modal table {
@@ -600,10 +609,24 @@ Generated Report
   border-collapse: collapse;
   margin: 1rem auto;
 }
-.model tbody {
-}
 .modal td {
   width: 7rem;
   white-space: nowrap;
   border: 1px solid var(--clr-primary-1);
+}
+/* 
+================== 
+QR Code
+==================
+*/
+.code-container {
+  background-color: var(--clr-white);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  width: clamp(180px, 85%, 250px);
+  text-align: center;
+}
+.code-img {
+  max-width: 100%;
+  margin-bottom: 0.5rem;
 }

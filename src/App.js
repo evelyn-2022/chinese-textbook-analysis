@@ -5,6 +5,7 @@ import BasicInformation from './components/BasicInformation';
 import QuestionForm from './components/QuestionForm';
 import Footer from './components/Footer';
 import GeneratedReport from './components/GeneratedReport';
+import QRCode from './components/QRCode';
 import './index.css';
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
   const [basicInformation, setBasicInformation] = useState({});
   const [total, setTotal] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isOpenQR, setIsOpenQR] = useState(false);
 
   const showScore = object => {
     if (scoreList.length <= 0) {
@@ -55,9 +57,9 @@ const App = () => {
 
   return (
     <>
-      {!isSubmitted && <Navbar />}
-      {!isSubmitted && <Header />}
-      {!isSubmitted && (
+      {!isSubmitted && !isOpenQR && <Navbar setIsOpenQR={setIsOpenQR} />}
+      {!isSubmitted && !isOpenQR && <Header />}
+      {!isSubmitted && !isOpenQR && (
         <main>
           <BasicInformation showInformation={showInformation} />
           <QuestionForm
@@ -67,14 +69,15 @@ const App = () => {
           />
         </main>
       )}
-      {!isSubmitted && <Footer />}
-      {isSubmitted && (
+      {!isSubmitted && !isOpenQR && <Footer />}
+      {isSubmitted && !isOpenQR && (
         <GeneratedReport
           info={basicInformation}
           total={total}
           setIsSubmitted={setIsSubmitted}
         />
       )}
+      {isOpenQR && <QRCode setIsOpenQR={setIsOpenQR} />}
     </>
   );
 };

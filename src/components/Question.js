@@ -44,7 +44,7 @@ const Question = ({
 
               {index === 0 && (
                 <FaRegFrown
-                  className={`answer-icon answer-icon-${index} ${
+                  className={`absolute-center answer-icon answer-icon-${index} ${
                     activeIndex === index && `answer-icon-active`
                   } ${hoverIndex === index && `answer-icon-hovered`}`}
                 />
@@ -52,7 +52,7 @@ const Question = ({
 
               {index === 1 && (
                 <FaRegMeh
-                  className={`answer-icon answer-icon-${index} ${
+                  className={`absolute-center answer-icon answer-icon-${index} ${
                     activeIndex === index && `answer-icon-active`
                   } ${hoverIndex === index && `answer-icon-hovered`}`}
                 />
@@ -60,7 +60,7 @@ const Question = ({
 
               {index === 2 && (
                 <FaSmile
-                  className={`answer-icon answer-icon-${index} ${
+                  className={`absolute-center answer-icon answer-icon-${index} ${
                     activeIndex === index && `answer-icon-active`
                   } ${hoverIndex === index && `answer-icon-hovered`}`}
                 />
@@ -68,7 +68,7 @@ const Question = ({
 
               {index === 3 && (
                 <FaLaughSquint
-                  className={`answer-icon answer-icon-${index} ${
+                  className={`absolute-center answer-icon answer-icon-${index} ${
                     activeIndex === index && `answer-icon-active`
                   } ${hoverIndex === index && `answer-icon-hovered`}`}
                 />
