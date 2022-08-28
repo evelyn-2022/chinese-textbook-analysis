@@ -453,29 +453,22 @@ Question Form
   padding-top: 1rem;
 }
 .question-card {
-  display: flex;
-  flex-direction: column;
+  column-count: 2;
+  justify-content: space-between;
 }
 .question-detail {
   text-align: left;
+  margin-bottom: 0.5rem;
 }
 .answer-btn-container {
-  text-align: left;
+  text-align: right;
 }
 .answer-btn:not(:last-of-type) {
   margin-right: 0.3rem;
 }
 @media screen and (min-width: 680px) {
-  .question-card {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
   .question-detail {
-    display: inline-block;
-  }
-  .answer-btn-container {
-    display: inline-block;
+    margin-bottom: 0;
   }
 }
 @media screen and (min-width: 1000px) {
@@ -492,16 +485,26 @@ Question Form
 }
 .answer-btn {
   display: inline-block;
-  width: 40px;
-  height: 40px;
-  border: 3px solid;
-  border-radius: 7px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1.5px solid;
+  border-radius: 5px;
   position: relative;
 }
 .answer-icon {
-  font-size: 27px;
+  font-size: 1rem;
 }
-
+@media screen and (min-width: 1000px) {
+  .answer-btn {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+    border-radius: 7px;
+  }
+  .answer-icon {
+    font-size: 1.6rem;
+  }
+}
 .answer-btn-0 {
   border-color: var(--clr-primary-4-light);
 }

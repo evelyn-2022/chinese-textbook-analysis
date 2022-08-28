@@ -33,7 +33,17 @@ const GeneratedReport = ({ info, total, setIsSubmitted }) => {
               <td>{info?.pages}</td>
             </tr>
             <tr>
-              <td colSpan={4}>总得分：{total}</td>
+              <td colSpan={2}>总得分：{total}</td>
+              <td colSpan={2}>
+                等级：
+                {total >= 150
+                  ? '优秀'
+                  : total >= 130
+                  ? '良好'
+                  : total >= 110
+                  ? '一般'
+                  : '较差'}
+              </td>
             </tr>
           </tbody>
         </table>

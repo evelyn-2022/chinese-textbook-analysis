@@ -1,5 +1,10 @@
 export const links = [
   {
+    id: 0,
+    url: '#basic-information',
+    text: '教材基本信息',
+  },
+  {
     id: 1,
     url: '#cat1',
     text: '理论和编排',
