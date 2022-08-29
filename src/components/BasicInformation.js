@@ -62,10 +62,7 @@ const BasicInformation = ({ showInformation }) => {
               <label htmlFor='year'>出版时间</label>
               <input
                 disabled={!isEditing}
-                type='number'
-                min='1800'
-                max='2099'
-                step='1'
+                type='text'
                 id='year'
                 value={year}
                 onChange={e => {
