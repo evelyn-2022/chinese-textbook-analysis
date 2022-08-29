@@ -17,7 +17,7 @@ Variables
   --clr-primary-4-light: hsl(353, 64%, 61%);
   --clr-primary-5-light: hsl(129, 48%, 65%);
 
-  --clr-white: #faf6f0;
+  --clr-white: rgb(250, 246, 240);
   --clr-black: #222;
 
   /* darkest grey - used for headings */
@@ -223,6 +223,7 @@ nav {
   width: 100vw;
   z-index: 1;
 }
+
 .nav-header {
   display: flex;
   align-items: center;
@@ -453,7 +454,8 @@ Question Form
   padding-top: 1rem;
 }
 .question-card {
-  column-count: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
 }
 .question-detail {
@@ -467,14 +469,25 @@ Question Form
   margin-right: 0.3rem;
 }
 @media screen and (min-width: 680px) {
+  .question-card {
+    grid-template-columns: repeat(4, 1fr);
+  }
   .question-detail {
     margin-bottom: 0;
+    grid-column: 1 / span 3;
   }
 }
 @media screen and (min-width: 1000px) {
   .divider-question-form {
     margin-top: -70px;
     margin-bottom: -30px;
+  }
+  .question-card {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .question-detail {
+    margin-bottom: 0;
+    grid-column: 1 / span 2;
   }
 }
 @media screen and (min-width: 1200px) {

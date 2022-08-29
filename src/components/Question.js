@@ -1,5 +1,10 @@
 import { React, useState, useEffect } from 'react';
-import { FaRegFrown, FaRegMeh, FaSmile, FaLaughSquint } from 'react-icons/fa';
+import {
+  FaRegFrown,
+  FaRegMeh,
+  FaRegSmile,
+  FaRegLaughSquint,
+} from 'react-icons/fa';
 
 const Question = ({
   categoryIndex,
@@ -59,7 +64,7 @@ const Question = ({
               )}
 
               {index === 2 && (
-                <FaSmile
+                <FaRegSmile
                   className={`absolute-center answer-icon answer-icon-${index} ${
                     activeIndex === index && `answer-icon-active`
                   } ${hoverIndex === index && `answer-icon-hovered`}`}
@@ -67,7 +72,7 @@ const Question = ({
               )}
 
               {index === 3 && (
-                <FaLaughSquint
+                <FaRegLaughSquint
                   className={`absolute-center answer-icon answer-icon-${index} ${
                     activeIndex === index && `answer-icon-active`
                   } ${hoverIndex === index && `answer-icon-hovered`}`}
