@@ -447,7 +447,7 @@ Question Form
   position: relative;
   background-color: var(--clr-primary-3);
   padding-top: 10px;
-  padding-bottom: 1rem;
+  padding-bottom: 3.5rem;
 }
 .question-categories > * + * {
   border-top: 2px dotted var(--clr-grey-6);
@@ -563,33 +563,6 @@ Question Form
   color: var(--clr-white);
 }
 
-/* 
-================== 
-Footer
-==================
-*/
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  padding-block: 1rem;
-  align-items: center;
-}
-.footer {
-  color: var(--clr-white);
-  margin-block: 0;
-}
-
-@media screen and (min-width: 680px) {
-  .footer-container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-@media screen and (min-width: 1000px) {
-  .footer-container {
-    width: clamp(300px, 100%, var(--fixed-width));
-  }
-}
 /* 
 ================== 
 Generated Report

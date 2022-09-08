@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Header from './components/Header';
 import BasicInformation from './components/BasicInformation';
 import QuestionForm from './components/QuestionForm';
-import Footer from './components/Footer';
 import GeneratedReport from './components/GeneratedReport';
 import QRCode from './components/QRCode';
 import './index.css';
@@ -69,7 +68,6 @@ const App = () => {
           />
         </main>
       )}
-      {!isSubmitted && !isOpenQR && <Footer />}
       {isSubmitted && !isOpenQR && (
         <GeneratedReport
           info={basicInformation}
