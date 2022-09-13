@@ -1,5 +1,5 @@
 import React from 'react';
-import code from '../images/frame.png';
+import code from '../images/frame-new.png';
 
 const QRCode = ({ setIsOpenQR }) => {
   return (
