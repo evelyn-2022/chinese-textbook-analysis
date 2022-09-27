@@ -33,11 +33,13 @@ const BasicInformation = ({ showInformation }) => {
       <div className='section' id='basic-information'>
         <form className='form collect-form'>
           <h2>教材基本信息</h2>
-          <fieldset className='basic-information-form flow'>
+          <fieldset
+            className='basic-information-form flow'
+            disabled={!isEditing}
+          >
             <div className='input-item'>
               <label htmlFor='name'>教材名称</label>
               <input
-                disabled={!isEditing}
                 type='text'
                 id='name'
                 value={name}
@@ -49,7 +51,6 @@ const BasicInformation = ({ showInformation }) => {
             <div className='input-item'>
               <label htmlFor='author'>作者</label>
               <input
-                disabled={!isEditing}
                 type='text'
                 id='author'
                 value={author}
@@ -61,7 +62,6 @@ const BasicInformation = ({ showInformation }) => {
             <div className='input-item'>
               <label htmlFor='year'>出版时间</label>
               <input
-                disabled={!isEditing}
                 type='text'
                 id='year'
                 value={year}
@@ -73,7 +73,6 @@ const BasicInformation = ({ showInformation }) => {
             <div className='input-item'>
               <label htmlFor='publisher'>出版单位</label>
               <input
-                disabled={!isEditing}
                 type='text'
                 id='publisher'
                 value={publisher}
@@ -85,7 +84,6 @@ const BasicInformation = ({ showInformation }) => {
             <div className='input-item'>
               <label htmlFor='type'>教材类型</label>
               <input
-                disabled={!isEditing}
                 type='text'
                 id='type'
                 value={type}
@@ -97,7 +95,6 @@ const BasicInformation = ({ showInformation }) => {
             <div className='input-item'>
               <label htmlFor='targetReader'>适用对象</label>
               <input
-                disabled={!isEditing}
                 type='text'
                 id='targetReader'
                 value={target}
@@ -109,7 +106,6 @@ const BasicInformation = ({ showInformation }) => {
             <div className='input-item'>
               <label htmlFor='size'>开本</label>
               <input
-                disabled={!isEditing}
                 type='text'
                 id='size'
                 value={size}
@@ -121,7 +117,6 @@ const BasicInformation = ({ showInformation }) => {
             <div className='input-item'>
               <label htmlFor='pages'>总页码</label>
               <input
-                disabled={!isEditing}
                 type='number'
                 min='0'
                 value={pages}
